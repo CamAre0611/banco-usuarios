@@ -1,0 +1,3 @@
+camila,1234,admin
+pedro,5678,usuario
+viviana,1234,usuario
