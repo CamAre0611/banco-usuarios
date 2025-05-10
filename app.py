@@ -1,8 +1,17 @@
+import os
 from flask import Flask
-from routes import usuarios_bp
+from flask_cors import CORS
+from routes import usuarios_bp  # o saldo_bp según el microservicio
 
 app = Flask(__name__)
-app.register_blueprint(usuarios_bp)
+CORS(app)
+
+# Cambiar esto según el microservicio
+app.register_blueprint(usuarios_bp)  # o saldo_bp, login_blueprint, etc.
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002)
+    port = int(os.environ.get('PORT', 5000))  # Render usa PORT, local usa 5000 o el que elijas
+    print("=== RUTAS ACTIVAS ===")
+    for rule in app.url_map.iter_rules():
+        print(rule)
+    app.run(host='0.0.0.0', port=port)
