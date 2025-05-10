@@ -6,7 +6,7 @@ from flask import Blueprint
 from controller.usuario_controller import UsuarioController
 from service.usuario_service import UsuarioService
 
-RUTA_USUARIOS = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../database/usuarios.txt'))
+RUTA_USUARIOS = os.path.abspath(os.path.join(os.path.dirname(__file__), 'database/usuarios.txt'))
 
 usuarios_bp = Blueprint('usuarios', __name__)
 usuario_service = UsuarioService(RUTA_USUARIOS)
